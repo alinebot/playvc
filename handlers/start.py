@@ -22,7 +22,7 @@ Maintained by @xdenvil ❤
             [
                 [
                     InlineKeyboardButton(
-                        "Command", url="https://telegra.ph/ĦŘØ-GΔΜŘ-04-02",
+                        "ADD Me Your group", url="https://t.me/URLmusicbot?startgroup=true",
                     )
                 ],
                 [
