@@ -30,7 +30,7 @@ from helpers.errors import DurationLimitError
 
 chat_id = None
 @Client.on_message(
-    filters.command("play")
+    filters.command("Music")
     & filters.group
     & ~ filters.edited
 )
@@ -38,7 +38,7 @@ chat_id = None
 async def play(client: Client, message_: Message):
     audio = (message_.reply_to_message.audio or message_.reply_to_message.voice) if message_.reply_to_message else None
     chat_id=message_.chat.id
-    res = await message_.reply_text("✯𝗩𝗖𝗣𝗹𝗮𝘆✯=🔄 Processing...")
+    res = await message_.reply_text("✯𝙋𝙇𝘼𝙔✯=🔄 Processing...")
 
     if audio:
         if round(audio.duration / 60) > DURATION_LIMIT:
@@ -78,14 +78,14 @@ async def play(client: Client, message_: Message):
 
     if message_.chat.id in tgcalls.pytgcalls.active_calls:
         position = sira.add(message_.chat.id, file_path)
-        await res.edit_text(f"✯𝗩𝗖𝗣𝗹𝗮𝘆✯=#️⃣ Queued at position {position}.")
+        await res.edit_text(f"✯𝗣𝗹𝗮𝘆✯=#️⃣ Queued at position {position}.")
     else:
-        await res.edit_text("✯𝗩𝗖𝗣𝗹𝗮𝘆✯=▶️ Playing...")
+        await res.edit_text("✯𝗣𝗹𝗮𝘆✯=▶️ Playing...")
         res.delete
         m = await client.send_photo(
         chat_id=message_.chat.id,
         photo="https://telegra.ph/file/7ffa8d18b9b7f1b51a81e.jpg",
-        caption=f"Playing Your song Via  [✯𝗩𝗖𝗣𝗹𝗮𝘆✯](https://t.me/LaylaSupport).",
+        caption=f"Playing Your song Via  [✯𝗣𝗹𝗮𝘆✯](https://t.me/Anierosupport).",
          ) 
         tgcalls.pytgcalls.join_group_call(message_.chat.id, file_path)
 
@@ -129,7 +129,7 @@ async def deezer(client: Client, message_: Message):
     m = await client.send_photo(
         chat_id=message_.chat.id,
         photo="final.png",
-        caption=f"Playing [{title}]({url}) Via [Deezer](https://t.me/LaylaSupport)."
+        caption=f"Playing [{title}]({url}) Via [Deezer](https://t.me/Anierosupport)."
     ) 
     os.remove("final.png")
 # -----------------------------------------------------Jiosaavn-----------------------------------------------------------------
@@ -174,7 +174,7 @@ async def jiosaavn(client: Client, message_: Message):
     await res.delete()
     m = await client.send_photo(
         chat_id=message_.chat.id,
-        caption=f"Playing {sname} Via [Jiosaavn](https://t.me/LaylaSupport)",
+        caption=f"Playing {sname} Via [Jiosaavn](https://t.me/Anierosupport)",
         photo="final.png",
     )
     os.remove("final.png")
@@ -190,7 +190,7 @@ def changeImageSize(maxWidth, maxHeight, image):
  
  #-----------------------------------YOUTUBE--------------------------------------------------------------
 @Client.on_message(
-    filters.command("ut")
+    filters.command("play")
     & filters.group
     & ~ filters.edited
 )
@@ -226,7 +226,7 @@ async def ytp(client: Client, message_: Message):
     res.delete
     m = await client.send_photo(
         chat_id=message_.chat.id,
-        caption=f"Playing `{query}` Via [YouTube](https://t.me/LaylaSupport)",
+        caption=f"Playing `{query}` Via [YouTube](https://t.me/Anierosupport)",
         photo="final.png",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("Watch on youtube", url=link)]]
